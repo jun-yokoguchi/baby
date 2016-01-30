@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates :nickname, length: { maximum: 20 }
   validates :title, length: { maximum: 20 }
   validates :profile, length: { maximum: 300 }
+  mount_uploader :image, ImageUploader
   
    #他のユーザーをフォローする
     def follow(other_user)

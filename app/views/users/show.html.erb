@@ -7,7 +7,7 @@
       </h1>
       <div>
             <%= link_to(followings_user_path(@user)) do %>
-              Followings:
+              フォロー:
               <strong id="followings" class="followings">
                 <%= @user.following_relationships.count %>
               </strong>
@@ -15,21 +15,55 @@
           </div>
           <div>
             <%= link_to(followers_user_path(@user)) do %>
-              Followers:
+              フォロワー:
               <strong id="followers" class="followers">
                 <%= @user.follower_relationships.count %>
               </strong>
             <% end %>
           </div>
        <li><%= link_to "プロフィールの編集", edit_user_path(current_user) %></li>
-       <li class=sell><%= image_tag '/販売したい方.png' %></li>
+       <div class="col-md-8">
+        <%= render 'follow_form' if logged_in? %>
+        <% if @user.microposts.any? %>
+          <h3>Microposts (<%= @user.microposts.count %>)</h3>
+          <ol class="microposts">
+              <%= render @microposts %>
+          </ol>
+        <% end %>
+       </div>
+       <li class=sell><%= link_to image_tag('images/販売したい方.png', { :border => '0', :alt => '販売したい方'}), new_seller_path %></li>
        <li class=banner><%= image_tag '/お気に入り.png' %></li>
        <li class=banner><%= image_tag '/購入履歴.png' %></li>
        <li class=banner><%= image_tag '/フォローした人.png' %></li>
      </section>
    </aside>
+   <% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>Welcome to the Microposts</h1>
+
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>
+
    <div class="col-md-8">
      <h1>タイムライン</h1>
+     <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+    <% end %>
    </div>
 </div>
 
