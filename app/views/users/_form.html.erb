@@ -1,0 +1,36 @@
+<div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        
+          <%= f.label :名前 %>
+          <%= f.text_field :name, class:'form-control' %>
+          
+          <%= f.label :ニックネーム %>
+          <%= f.text_field :nickname, class:'form-control' %>
+          
+          <%= f.label :肩書き %>
+          <%= f.text_field :title, class:'form-control' %>
+          
+          <%= f.label :プロフィール %>
+          <%= f.text_area :profile, class:'form-control' %>
+          
+          <%= f.label :ホームページ %>
+          <%= f.text_field :homepage, class:'form-control' %>
+          
+          <%= f.label :ブログ %>
+          <%= f.text_field :blog, class: 'form-control'%>
+          
+          <%= f.label :facebook %>
+          <%= f.text_field :facebook, class: 'form-control' %>
+          
+          <%= f.label :twitter, "Confirmation" %>
+          
+           <%= f.label :mixi, "Confirmation" %>
+          <%= f.password_field :mixi, class: 'form-control' %>
+          
+          
+          <%= f.submit class: "btn btn-large btn-primary" %>
+        <% end %>
+      </div>
+  </div>

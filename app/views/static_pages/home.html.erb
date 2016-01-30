@@ -1,2 +1,113 @@
-<h1>＜ベビー専門＞ハンドメイドギフト</h1>
-<p>作り手の心が伝わる　あたたかいハンドメイドの数々</p>
+<div class="search">
+  <%= form_tag new_item_path , method: :get do %>
+    <%= text_field_tag :q , params[:q], placeholder: "欲しいアイテムや作家を探してみよう", required: true %>
+    <%= submit_tag "検索", name: nil , class: "btn btn-success", data: { disable_with: "検索中..."} %>
+  <% end %>
+</div>
+<div class="search-result">
+  <% if @amazon_items.present? %>
+    <div class="alert alert-info">
+      <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+      気になったアイテムが欲しければ「Want」持ってれば「Have」しましょう
+    </div>
+    <%= render 'amazon_items' , amazon_items: @amazon_items %>
+  <% elsif params[:q].present? %>
+    <div class="alert alert-danger">
+      <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+      検索したアイテムはありません
+    </div>
+  <% end %>
+</div>
+<nav class="navbar navbar-default navbar-center">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample2">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">
+				<img alt="Brand" src="brandImage.png" style="height: 20px;">
+			</a>
+		</div>
+		
+		<div class="collapse navbar-collapse" id="navbarEexample2">
+			<ul class="nav navbar-nav">
+				<li><a href="#">洋服</a></li>
+				<li><a href="#">衣装</a></li>
+				<li><a href="#">カバン</a></li>
+				<li><a href="#">くつ</a></li>
+				<li><a href="#">アクセサリー</a></li>
+				<li><a href="#">かざり</a></li>
+				<li><a href="#">小物</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="row">
+  <div class="col-xs-6 col-md-3 hidden-sm">
+    <img src="http://bootstrap3.cyberlab.info/img/sample-256x256.png" class="img-circle" alt="サンプル画像">
+			<div class="caption">
+				<h3>人気アーティスト</h3>
+				<p>紹介</p>
+				<p>...</p>
+				<p><a href="http://bootstrap3.cyberlab.info/img/sample-256x256.png" class="btn btn-default" role="button" target="_blank">ボタン</a></p>
+			</div>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+		<div class="thumbnail">
+			<img src="http://bootstrap3.cyberlab.info/img/sample-256x256.png">
+			<div class="caption">
+				<h3>タイトル</h3>
+				<p>段落。</p>
+				<p>...</p>
+				<p><a href="http://bootstrap3.cyberlab.info/img/sample-256x256.png" class="btn btn-default" role="button" target="_blank">ボタン</a></p>
+			</div>
+			<img src="http://bootstrap3.cyberlab.info/img/sample-256x256.png">
+			<div class="caption">
+				<h3>タイトル</h3>
+				<p>段落。</p>
+				<p>...</p>
+				<p><a href="http://bootstrap3.cyberlab.info/img/sample-256x256.png" class="btn btn-default" role="button" target="_blank">ボタン</a></p>
+			</div>
+		</div>
+	</div>
+  <div class="col-xs-6 col-md-3">
+		<div class="thumbnail">
+			<img src="http://bootstrap3.cyberlab.info/img/sample-256x256.png">
+			<div class="caption">
+				<h3>タイトル</h3>
+				<p>段落。</p>
+				<p>...</p>
+				<p><a href="http://bootstrap3.cyberlab.info/img/sample-256x256.png" class="btn btn-default" role="button" target="_blank">ボタン</a></p>
+			</div>
+			<img src="http://bootstrap3.cyberlab.info/img/sample-256x256.png">
+			<div class="caption">
+				<h3>タイトル</h3>
+				<p>段落。</p>
+				<p>...</p>
+				<p><a href="http://bootstrap3.cyberlab.info/img/sample-256x256.png" class="btn btn-default" role="button" target="_blank">ボタン</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-6 col-md-3">
+		<div class="thumbnail">
+			<img src="http://bootstrap3.cyberlab.info/img/sample-256x256.png">
+			<div class="caption">
+				<h3>タイトル</h3>
+				<p>段落。</p>
+				<p>...</p>
+				<p><a href="http://bootstrap3.cyberlab.info/img/sample-256x256.png" class="btn btn-default" role="button" target="_blank">ボタン</a></p>
+			</div>
+			<img src="http://bootstrap3.cyberlab.info/img/sample-256x256.png">
+			<div class="caption">
+				<h3>タイトル</h3>
+				<p>段落。</p>
+				<p>...</p>
+				<p><a href="http://bootstrap3.cyberlab.info/img/sample-256x256.png" class="btn btn-default" role="button" target="_blank">ボタン</a></p>
+			</div>
+		</div>
+	</div>
+</div>
