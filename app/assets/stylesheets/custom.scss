@@ -14,9 +14,10 @@ section {
 .container {
   color: #000;
   margin-top: 0;
-  .header {
+  //background: image-url("logo.png") left no-repeat;
+  /*.header {
   background: image-url("cover.jpg") center center no-repeat;
-  }
+  }*/
 }
 
 textarea {
@@ -59,12 +60,12 @@ p {
 }
 
 /* header */
-header.navvar {
+/*header.navvar {
   background: image-url("cover.jpg") center center no-repeat;
-}
-.logo {
-  background: image-url("logo.png") center center no-repeat;
-}
+}*/
+/*.logo {
+  background: image-url("logo.png") left no-repeat;
+}*/
 #logo {
   float: left;
   margin-right: 10px;
