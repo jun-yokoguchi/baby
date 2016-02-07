@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy]
   before_action :set_user, only: [:edit, :update]
   before_action :correct_user, only:[:edit, :update]
+  before_action :sign_in_required, only: [:show]
   
   def show
     @user = User.find(params[:id])
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def home
-    @micropost = current_user.microposts.build if logged_in?
+    @micropost = current_user.microposts.build if user_signed_in?
   end
   def create
     @user = User.new(user_params)
@@ -61,6 +62,6 @@ class UsersController < ApplicationController
   
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user)
+    redirect_to(root_path) unless current_user == @user
   end
 end

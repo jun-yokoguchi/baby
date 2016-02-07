@@ -1,15 +1,19 @@
 class SellersController < ApplicationController
+  before_action :authenticate_user!
+  
+  def new
+    render "sellers/new"
+  end
+  
   def show
     @user = User.find(params[:id])
   end
   def seller
     @user = User.find(params[:id])
   end
-  def new
-    @user = User.new
-  end
+  
   def home
-    @micropost = current_user.microposts.build if logged_in?
+    @micropost = current_user.microposts.build if user_signed_in?
   end
   def create
     @user = User.new(user_params)

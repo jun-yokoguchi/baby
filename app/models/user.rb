@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
+  belongs_to :seller, class_name: "Seller", foreign_key: "seller_id", dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }, on: :update
   

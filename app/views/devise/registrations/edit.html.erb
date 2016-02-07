@@ -1,0 +1,74 @@
+<h2>プロフィール編集 <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="field">
+    <%= f.label :名前 %>
+    <%= f.text_field :name, autofocus: true, class:'form-control'%>
+  </div>
+  <div class="field">
+    <%= f.label :ニックネーム %>
+    <%= f.text_field :nickname, class:'form-control' %>
+  </div>
+  <div class="field">        
+    <%= f.label :肩書き %>
+    <%= f.text_field :title, class:'form-control' %>
+  </div>
+  <div class="field">        
+    <%= f.label :プロフィール %>
+    <%= f.text_area :profile, class:'form-control' %>
+  </div>
+  <div class="field">        
+    <%= f.label :ホームページ %>
+    <%= f.text_field :homepage, class:'form-control' %>
+  </div>        
+  <div class="field">        
+    <%= f.label :ブログ %>
+    <%= f.text_field :blog, class: 'form-control'%>
+  </div>        
+  <div class="field">        
+    <%= f.label :facebook %>
+    <%= f.text_field :facebook, class: 'form-control' %>
+  </div>
+  <div class="field">        
+    <%= f.label :twitter %>
+    <%= f.text_field :twitter, class: 'form-control' %>
+  </div>
+  <div class="field">        
+    <%= f.label :mixi %>
+    <%= f.text_field :mixi, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :パスワード %> <i>(変更しない場合は空欄のままにしておいてください)</i><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :もう一度パスワードを入力してください %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :現在のパスワード %> <i>(変更する場合は現在のパスワードも入力してください)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新する" %>
+  </div>
+<% end %>
+
+<%#<h3>Cancel my account</h3>%>
+
+<%#<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete </p>%>
+
+<%= link_to "戻る", :back %>
