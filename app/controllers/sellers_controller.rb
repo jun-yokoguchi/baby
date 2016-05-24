@@ -1,5 +1,5 @@
 class SellersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_seller!
   
   def new
     render "sellers/new"
@@ -13,8 +13,9 @@ class SellersController < ApplicationController
   end
   
   def home
-    @micropost = current_user.microposts.build if user_signed_in?
+    @micropost = current_user.microposts.build if seller_signed_in?
   end
+  
   def create
     @user = User.new(user_params)
     if @user.save
@@ -27,6 +28,6 @@ class SellersController < ApplicationController
   private
   
   def seller_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :age, :nickname, :title, :profile, :homepage, :blog, :twitter, :facebook, :mixi, :image)
+    params.require(:user).permit(:name, :pname, :address, :birthday, :gender, :phone, :postalcode, :image)
   end
 end

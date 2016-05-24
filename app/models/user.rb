@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
     def feed_items
         Micropost.where(user_id: following_user_ids + [self.id])
     end
+    #URLにID以外を表示
+    #def to_param
+     # "#{id}-#{name}"
+    #end
 
     # has_secure_password
     has_many :microposts

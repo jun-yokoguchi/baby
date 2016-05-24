@@ -1,0 +1,52 @@
+<h2>販売登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :名前 %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :フリガナ %><br />
+    <%= f.text_field :pname %>
+  </div>
+  <div class="field">
+    <%= f.label :生年月日 %><br />
+    <%= f.text_field :birthday %>
+  </div>
+  <div class="field">
+    <%= f.label :性別 %><br />
+    <%= f.text_field :pname %>
+  </div>
+  <div class="field">
+    <%= f.label :郵便番号 %><br />
+    <%= f.text_field :postalcode %>
+  </div>
+　<div class="field">
+    <%= f.label :住所 %><br />
+    <%= f.text_field :address%>
+  </div>
+  <div class="field">
+    <%= f.label :認証用メールアドレス %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :パスワード %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :もう一度パスワードを入力してください %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "この内容で登録する" %>
+  </div>
+<% end %>
+
+<%= render "sellers/shared/links" %>

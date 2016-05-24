@@ -3,7 +3,7 @@
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= @user.nickname %>
       </h1>
       <div>
             <%= link_to(followings_user_path(@user)) do %>
@@ -25,7 +25,7 @@
        <div class="col-md-8">
         <%= render 'follow_form' if user_signed_in? %>
        </div>
-       <li class=sell><%= link_to image_tag('images/販売したい方.png', { :border => '0', :alt => '販売したい方'}), new_seller_path(current_user) %></li>
+       <li class=sell><%= link_to image_tag('images/販売したい方.png', { :border => '0', :alt => '販売したい方'}), new_seller_registration_path %></li>
        <li class=banner><%= image_tag '/お気に入り.png' %></li>
        <li class=banner><%= image_tag '/購入履歴.png' %></li>
        <li class=banner><%= image_tag '/フォローした人.png' %></li>
