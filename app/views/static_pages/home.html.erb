@@ -1,10 +1,12 @@
-<div class="search">
+<div class="main">
+	<%= image_tag "logo.png",  alt: "Brand", style: "height: 50px;" %>
+ <div class="search">
   <%= form_tag new_item_path , method: :get do %>
     <%= text_field_tag :q , params[:q], placeholder: "欲しいアイテムや作家を探してみよう", required: true %>
     <%= submit_tag "検索", name: nil , class: "btn btn-success", data: { disable_with: "検索中..."} %>
   <% end %>
-</div>
-<div class="search-result">
+ </div>
+ <div class="search-result">
   <%#<% if @amazon_items.present? %>
     <%#<div class="alert alert-info">
       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
@@ -17,7 +19,8 @@
       検索したアイテムはありません
     </div>
   <% end %>
-</div>
+ </div>
+</div
 <nav class="navbar navbar-default navbar-center">
 	<div class="container-fluid">
 		<div class="navbar-header">
